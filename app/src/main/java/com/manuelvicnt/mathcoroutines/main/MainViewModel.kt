@@ -38,9 +38,8 @@ class MainViewModel : ViewModel() {
     }
 
     override fun onCleared() {
-        Log.d("MainViewModel", "onCleared")
         viewStateChannel.close()
-        parentJob.cancelChildren()
+        parentJob.cancel()
         super.onCleared()
     }
 

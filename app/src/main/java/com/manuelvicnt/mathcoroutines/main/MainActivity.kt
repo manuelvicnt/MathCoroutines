@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
+        parentJob.cancel()
         super.onStop()
-        parentJob.cancelChildren()
     }
 
     private fun setupViews() {
