@@ -35,15 +35,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViews() {
         calcButton.setOnClickListener {
-            runBlocking {
-                viewModel.userActionActor.send(MainUserAction.Calculate(input.text.toString().toLong()))
-            }
+            viewModel.userActionActor.offer(MainUserAction.Calculate(input.text.toString().toLong()))
         }
 
         funFact.setOnCheckedChangeListener { _, isChecked ->
-            runBlocking {
-                viewModel.userActionActor.send(MainUserAction.FunFactEnabled(isChecked))
-            }
+            viewModel.userActionActor.offer(MainUserAction.FunFactEnabled(isChecked))
         }
     }
 
